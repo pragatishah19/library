@@ -127,7 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-books/migrations/
-accounts/migrations/
+books/migrations/__pycache__/
+accounts/migrations/books/migrations/__pycache__/
 .vscode/
 frontend/
