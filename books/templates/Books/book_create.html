@@ -3,10 +3,23 @@
 <br>
 <h4 class="text-center alert alert-info">Add New Book</h4>
 <br>
-<div class="row">
-  <div class="col-sm-4">
+<div class="row justify-content-center">
+  <div class="col-sm-9">
       <form method = 'POST' enctype = 'multipart/form-data'> {% csrf_token %}
-        {{form.as_p}}
+        {% comment %} {{form.as_p}} {% endcomment %}
+        <table class="table table-borderless">
+          {% comment %} {{form.as_table}} {% endcomment %}
+        {% for field in form %}
+          <div class="form-group row">
+            <div class="col-sm-2 col-form-label">
+              {{ field.label_tag }}
+            </div> 
+            <div class="col-sm-8">
+              {{ field }}
+            </div>
+          </div>
+        {% endfor %} 
+        </table>
         <button type="submit" class="btn btn-primary">Create</button>
       </form>
   </div>

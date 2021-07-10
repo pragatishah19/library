@@ -8,6 +8,14 @@ class BookForm(forms.ModelForm):
         model = Books
         fields = ['name','author','is_available','price','pub_date','genre','pic']
         # fields = '__all__'
+        widgets = {
+            'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter book name'}),
+            'author':forms.Select(attrs={'class':"btn btn-primary dropdown-toggle","placeholder": "Author of the Book"}),
+            'price':forms.TextInput(attrs={'class':'form-control',"placeholder": "Price of the Book"}),
+            'pub_date':forms.SelectDateWidget(years=[x for x in range(1980, 2030)]),
+            'genre':forms.Select(attrs={'class':"btn btn-primary dropdown-toggle","placeholder": "Genre of the Book"}),
+        }
+
 
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
