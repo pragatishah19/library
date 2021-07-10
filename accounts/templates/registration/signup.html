@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+  {% block content %}
+
+    <div class="col col-sm-5">
+    <div class="text-center card alert alert-light text-primary">
+    <h4><div class="card-header alert mt-3">Library Management System</div></h4>
+        <div class="card-body">
+        <h5 class="card-title mt-n3 mb-4">Sign Up</h5>
+        <p class="card-text"> 
+        <form method="post">{% csrf_token %}
+            {% for field in form %}
+            <div class="form-group row">
+                {% comment %} <div class="col-sm-4 col-form-label">
+                    {{ field.label_tag }}
+                </div> {% endcomment %}
+                <div class="col-sm-12">
+                    {{ field }}
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+            {% comment %} <div class="row justify-content-center">
+            <form method="post"> {% csrf_token %}
+                {% comment %} <div class="row">
+                <form method="post"> {% csrf_token %} {% endcomment %}
+                {% comment %} {{form.as_p}} {% endcomment %}
+                {% comment %} {% for field in form.visible_fields %}
+                    <label for = "fieldid" class="col-sm-4 col-form-label">{{ field.label_tag }}</label>
+                    {{ field }} {% endcomment %}
+                    {% comment %} <div class="form-group row">
+                    <label for = "fieldid" class="col-sm-4 col-form-label">{{ field.label_tag }}</label>
+                    <div id="fieldid" class="col-sm-8 form-control"> {% endcomment %}
+                    {% comment %} {{field}}
+                    </div> {% endcomment %}
+                    {% comment %} {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %} {% endcomment %}
+                    {% comment %} </div>
+                {% endfor %}
+                <br>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            </div> {% endcomment %}
+        </p>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

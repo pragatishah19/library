@@ -1,0 +1,20 @@
+{% extends "Books/base.html" %}
+  {% block content %}
+
+<h4 class="text-center alert alert-primary">Add New Author</h4>
+<br><br>
+<div class="row">
+  <div class="col-sm-4">
+      <form method = 'POST'> {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+  </div>
+</div>
+
+{% comment %} <form method = 'POST'> {% csrf_token %}
+{{form.as_p}}
+<input type=submit value = 'Create'>
+</form> {% endcomment %}
+
+{% endblock %}

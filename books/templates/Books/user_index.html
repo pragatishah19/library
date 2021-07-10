@@ -1,0 +1,8 @@
+{# <a href = "{% url 'books:user_list_view' %}">user list</a> #}
+
+<h1>details of user</h1>
+{% for i in user%}
+<li>
+<a href = "{% url 'books:user_detail_view' forloop.counter %}">{{i.name}}</a><br>
+</li>
+{% endfor %}

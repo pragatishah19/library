@@ -1,0 +1,14 @@
+{% extends "Books/base.html" %}
+  {% block content %}
+<br>
+<h4 class="text-center alert alert-info">Add New Book</h4>
+<br>
+<div class="row">
+  <div class="col-sm-4">
+      <form method = 'POST' enctype = 'multipart/form-data'> {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+  </div>
+</div>
+{% endblock %}

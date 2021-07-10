@@ -1,0 +1,31 @@
+{% extends "Books/base.html" %}
+  {% block content %}
+
+<h4 class="text-center alert alert-primary">Author Detail</h4>
+<br><br>
+    <center>
+    <table class="table table-hover col-sm-6">
+        <tr>
+            <th scope="col">Name:</th>
+            <td><center>{{author.name}}</center></td>
+        </tr>
+        <tr>
+            <th scope="col">Age:</th>
+            <td><center>{{author.age}}</center></td>
+        </tr>
+    </table>
+    </center>
+    
+<br><br>
+<h4>
+    <div><a class='float-left btn-lg btn-primary' href = "{{author.get_absolute_url}}update">Update Author</a></div>
+    <div><a class = 'float-right btn-lg btn-primary' href = "{{author.get_absolute_url}}delete">Delete Author</a></div>
+</h4>
+
+{% comment %} <h2><lable> Author Name:</lable>
+{{author.name}}
+</h2>
+<lable> Age: </lable>
+{{author.age}} {% endcomment %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+  {% block content %}
+    <div class="col col-sm-5">
+    <div class="text-center card alert alert-light text-primary mb-3">
+    <h4><div class="card-header alert mt-3">Library Management System</div></h4>
+        <div class="card-body">
+        <h5 class="card-title mt-n3 mb-4">Login</h5>
+        <p class="card-text"> 
+            <div class="row justify-content-center">
+            <form method="post"> {% csrf_token %}
+                        {% for field in form %}
+            <div class="form-group row">
+                <div class="col-sm-4 col-form-label">
+                    {{ field.label_tag }}
+                </div>
+                <div class="col-sm-8 ">
+                    {{ field }}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% comment %} {{form.as_p}} {% endcomment %}
+            <br>
+            <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            </div>
+            <br>
+            <h5><label for="signupid">New Member?   </label>
+            <a id = "signupid" href = " {% url 'accounts:signup_view' %}"> Sign Up</a></h5>
+        </p>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

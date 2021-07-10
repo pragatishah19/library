@@ -1,0 +1,14 @@
+{% extends "Books/base.html" %}
+  {% block content %}
+<br>
+<h4 class="text-center alert alert-info">Update User</h4>
+<br>
+<div class="row no-gutters">
+  <form method = 'POST'> {% csrf_token %}
+    {{form.as_p}}
+    <br>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+
+{% endblock %}

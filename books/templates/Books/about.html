@@ -1,0 +1,14 @@
+{% extends "Books/base.html" %}
+  {% block content %}
+
+<br><br>
+<h1>Welcome Readers.</h1>
+
+{% if user.is_authenticated %}
+welcome {{user}} <br>
+Click <a href="{% url 'logout' %}">here</a> for Logout
+{% else %}
+Click <a href="{% url 'login' %}">here</a> for Login
+{% endif %}
+
+{% endblock %}

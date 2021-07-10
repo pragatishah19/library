@@ -1,0 +1,9 @@
+
+{% for i in books%}
+<li>
+<a href = "{% url 'books:book_list_view' %}">{{i.name}}</a><br>
+</li>
+{% endfor %}
+
+
+<a href="{% url 'books:book_list_view' %}">book list</a>

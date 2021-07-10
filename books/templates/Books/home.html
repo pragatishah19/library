@@ -1,0 +1,31 @@
+{% comment %} {% extends 'Books/header.html' %} {% endcomment %}
+{% include 'Books/header.html' %}
+{% comment %} {% block 'main' %}
+This is in home
+{% endblock  %} {% endcomment %}
+
+
+<h2>This is Home Page</h2>
+{{num}}<br>
+{{ num |add:'2' }}<br>
+You have {{num}} mail{{num|pluralize}} in your inbox.<br>
+size of number is:{{num |filesizeformat}}<br>
+digit at hundred's place:{{num|get_digit:3}}<br>
+{{str}}<br>
+{{str |capfirst }}<br>
+{{str|title}}<br>
+{{str |cut:'test' }}<br>
+{{str|slugify}}<br>
+{{str|truncatechars:7}}<br>
+Number of words in {{str}} is :{{str|wordcount}}<br>
+{{site|urlize}}<br>
+{{email|urlize}}<br>
+length of {{str}} is :{{str|length}}<br>
+{{date|date:'l d M Y'}}<br>
+{{date|date:'SHORT_DATETIME_FORMAT'}}<br>
+{{date|time:"TIME_FORMAT"}}<br>
+{{date|time:"H\h i\m"}}<br>
+{{date|timesince}}<br>
+
+{% include 'Books/footer.html' %}
+

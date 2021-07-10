@@ -1,0 +1,129 @@
+{% extends "Books/base.html" %}
+  {% block content %}
+
+<form method = POST> {% csrf_token %}
+<div class="d-flex1">
+<h5>Which book do you want to return?</h5>
+    <div>
+    <select class="custom-select custom-select-lg"  name = 'users_pk'>
+      <option selected>Select User</option>
+      {% for user in users_list  %}
+        <option value = {{user.pk}}>{{user.name}}
+      {% endfor %}
+    </select>
+  </div>
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn-lg btn-primary">Check Book</button>
+  </div>
+  </form>
+<form method = POST> {% csrf_token %}
+<div class="d-flex1">
+  <div>
+    <select class="custom-select custom-select-lg" name = 'books_pk'>
+      <option selected>Select Book</option>
+        {% for book in books_list  %}
+          <option value = {{book.pk}}>{{book.name}}
+        {% endfor %}
+    </select>
+  </div>
+</div>
+<br><br>
+
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn-lg btn-primary">Return</button>
+  </div>
+  </form>
+
+{% comment %} Hello
+{% for user in users_list  %}
+{% for book in user_id.books  %}
+{{book.name}}
+{% endfor %}
+{% endfor %} {% endcomment %}
+{% comment %} <select id="user_select" onchange="myFunction()">
+      <option selected>Select User</option>
+      {% for user in users_list  %}
+        <option value = {{forloop.counter}}>{{user.name}}</option>
+      {% endfor %}
+</select>
+<p id="demo"></p>
+
+<select id="book_select" name = 'books_pk'>
+  <option selected>Select Book</option>
+    {% for book in books_list  %}
+      <option value = {{book.pk}}>{{book.name}}</option>
+    {% endfor %}
+</select>
+<script>
+function myFunction() {
+  var x = document.getElementById("user_select").value;
+  document.getElementById("demo").innerHTML = "Hellll {{users_list.x.no_of_books_taken}}" ;
+}
+</script>
+  {% comment %} document.getElementById("book_select").innerHTML =     
+        "{% for book in users_list.x.books  %} <option value = {{book.pk}}>{{book.name}}</option> {% endfor %}"; {% endcomment %}
+
+
+ {% comment %} <h4 class="text-center alert alert-primary">Return Book</h4>
+<br><br>
+<form method = GET> {% csrf_token %}
+    <div>
+    <select id = "user_select" class="custom-select custom-select-lg" onchange="myfun()" name = 'users_pk'>
+      <option selected>Select User</option>
+      {% for user in users_list  %}
+        <option value = {{user.pk}}>{{user.name}}
+      {% endfor %}
+    </select>
+  </div>
+</form>
+<p id = "book_select"> </p>
+<form method = POST> {% csrf_token %}
+<div class="d-flex1">
+<h5>Which book do you want to return?</h5>
+    {% comment %} <div>
+    <select class="custom-select custom-select-lg"  name = 'users_pk'>
+      <option selected>Select User</option>
+      {% for user in users_list  %}
+        <option value = {{user.pk}}>{{user.name}}
+      {% endfor %}
+    </select>
+  </div> {% endcomment %}
+
+   {% comment %} <div>
+    <select class="custom-select custom-select-lg" name = 'books_pk'>
+      <option selected>Select Book</option>
+        {% for book in books_list  %}
+          <option value = {{book.pk}}>{{book.name}}
+        {% endfor %}
+    </select>
+  </div>
+</div>
+<br><br>
+
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn-lg btn-primary">Return</button>
+  </div>
+  </form>
+
+{% comment %} <form method = POST> {% csrf_token %}
+Which book do you want to return?
+<br>
+<select name = 'books_pk'>
+{% for book in books_list  %}
+<option value = {{book.pk}}>{{book.name}}
+{% endfor %}
+</select>
+
+<br><br><br>
+
+<input type = 'submit' value = 'Return'>
+
+</form> {% endcomment %}
+<script>
+function myFun() {
+  var x = document.getElementById("user_select").value;
+  document.getElementById("book_select").innerHTML = "You selected: " + x;
+}
+</script>
+
+{% endblock %}

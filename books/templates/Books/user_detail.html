@@ -1,0 +1,61 @@
+
+{% extends "Books/base.html" %}
+  {% block content %}
+
+<h4 class="text-center alert alert-primary">User Detail</h4>
+    <center>
+    <table class="table table-hover col-sm-6">
+        <tr>
+            <th scope="col">Name:</th>
+            <td><center>{{user.name}}</center></td>
+        </tr>
+        <tr>
+            <th scope="col">Mobile Number:</th>
+            <td><center>{{user.mobile}}</center></td>
+        </tr>
+        <tr>
+            <th scope="col">Number of books taken:</th>
+            <td><center>{{user.no_of_books_taken}}</center></td>
+        </tr>
+        <tr>
+            <th scope="col">Book Names:</th>
+            <td><center>{% for i in books %}
+                        {{i.name}} <br>
+                        {% endfor %}
+                </center>
+            </td>
+        </tr>
+    </table>
+    </center>
+{% comment %} 
+<h2><lable> Name: </lable>
+    {{user.name}}<br></h2>
+<lable> Mobile Number: </lable>
+    {{user.mobile}}<br>
+<lable> Number of books taken: </lable>
+    {{user.no_of_books_taken}}<br>
+<lable> Book Names: </lable>
+{% for i in books %}
+{{i.name}},
+{% endfor %} {% endcomment %}
+
+<br><br>
+<h4>
+    <div><a class='float-left btn-lg btn-primary' href = "{{user.get_absolute_url}}update">Update User</a></div>
+    <div><a class = 'float-right btn-lg btn-primary' href = "{{user.get_absolute_url}}delete">Delete User</a></div>
+    <div class="d-flex justify-content-center">
+        <a class = 'btn-lg btn-primary' href = "{{user.get_absolute_url}}return">Return Book</a>
+    </div>
+</h4>
+
+{#{{user.books.all}}#}
+{#u can use index like this {{books.0.name}} #}
+{% comment %} <br>
+<a href = "{{user.get_absolute_url}}update" > Update User </a>
+<br><br>
+<a href = "{{user.get_absolute_url}}delete"> Delete User </a> 
+
+<br><br>
+<a href = "{{user.get_absolute_url}}return">Return Book</a> {% endcomment %}
+
+{% endblock %}
