@@ -316,7 +316,7 @@ def Book_return_view(request,pk):
         user.save()
         return redirect(reverse('books:user_detail_view', args = [pk]))
 
-    return render(request,'books/book_return.html',context)
+    return render(request,'Books/book_return.html',context)
 
 def Book_return_user(request):
     users_list = User.objects.all()
@@ -326,7 +326,7 @@ def Book_return_user(request):
     if request.method == 'POST':
         user_pk = request.POST.get('users_pk')
         return redirect(reverse('books:book_return_view', args = [user_pk]))
-    return render(request,'books/book_return_user.html',context)
+    return render(request,'Books/book_return_user.html',context)
 
 
 def Book_return1(request):
@@ -354,7 +354,7 @@ def Book_return1(request):
         user.save()
         return redirect(reverse('books:user_detail_view', args = [user_pk]))
 
-    return render(request,'books/book_return.html',context)
+    return render(request,'Books/book_return.html',context)
 
 # def Book_return1(request):
 #     users_list = User.objects.all()
@@ -376,4 +376,4 @@ def Book_return1(request):
 #         user.save()
 #         return redirect(reverse('books:user_detail_view', args = [user_pk]))
 
-#     return render(request,'books/book_return.html',context)
+#     return render(request,'Books/book_return.html',context)
