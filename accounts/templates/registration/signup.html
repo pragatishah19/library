@@ -1,12 +1,8 @@
 {% extends "base.html" %}
   {% block content %}
 
-    <div class="col col-sm-4">
-    <div class="text-center card alert alert-light text-primary">
-    <h4><div class="card-header alert mt-3">Library Management System</div></h4>
-        <div class="card-body">
-        <h5 class="card-title mt-n3 mb-4">Sign Up</h5>
-        <p class="card-text"> 
+    <h5 class="card-title mt-n3 mb-4">Sign Up</h5>
+    <p class="card-text"> 
         <form method="post">{% csrf_token %}
             {% for field in form %}
             <div class="form-group row">
@@ -15,12 +11,16 @@
                 </div> {% endcomment %}
                 <div class="col-sm-12">
                     {{ field }}
+                    {% for error in field.errors %}
+                    <div style="color: red">{{ error }}</div>
+                    {% endfor %}
                 </div>
             </div>
             {% endfor %}
             <br>
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
+    </p>
             {% comment %} <div class="row justify-content-center">
             <form method="post"> {% csrf_token %}
                 {% comment %} <div class="row">
@@ -43,9 +43,5 @@
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
             </div> {% endcomment %}
-        </p>
-        </div>
-    </div>
-    </div>
 
 {% endblock %}
