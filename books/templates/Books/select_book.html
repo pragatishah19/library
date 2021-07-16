@@ -1,0 +1,35 @@
+<script>
+$(function (){
+    $(".js-show-books").on("change",function() {
+        console.log("pragati button clicked")
+        output = "";
+        let us = $("#user_select").val();
+        let csr = $("input[name=csrfmiddlewaretoken").val()
+        if(us == ""){
+            console.log("please select user");
+        }
+        else{
+            console.log(us);
+            mydata = {selectuser:us, csrfmiddlewaretoken:csr };
+            $.ajax({
+                url: "{% url 'books:select_book' %}",
+                method:"POST",
+                data:mydata,
+                success: function(data){
+                    x = data.books_list;
+                    output = "<select id = 'book_select' class='custom-select custom-select-lg' name = 'books_pk'> <option selected> </option>"
+                    if(data.status == "1"){
+                        console.log(data)
+                        for(i=0;i<x.length;i++){
+                            output += "<option value = " + x[i].id + ">" + x[i].name + "</option>"
+                        }
+                        console.log(output);
+                        $(".js-select-user").html(output);
+                    }
+                }
+            })
+        };
+    });
+});
+
+</script>

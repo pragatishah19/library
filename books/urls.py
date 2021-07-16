@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from books.views import (
     Home_view,About,Contact_us,static_demo_view,Genre_create_view,Book_issue_view,Book_return_view,Book_return1,Book_return_user,
-    Book_index_view,Book_list_view,Book_detail_view,Book_create_view,Book_update_view,Book_delete_view,
+    Book_index_view,Book_list_view,Book_detail_view,Book_create_view,Book_update_view,Book_delete_view,Select_book,
     Author_create_view,Author_list_view,Author_index_view,Author_delete_view,Author_detail_view,Author_update_view,
     User_list_view,User_index_view,User_detail_view,User_create_view,User_update_view,User_delete_view,
     BookDetailView,BookListView,AuthorDetailView,AuthorListView,BookCreateView,BookUpdateView,BookDeleteView
@@ -19,6 +19,7 @@ urlpatterns = [
     path('issue/',Book_issue_view,name = 'book_issue_view'),
     path('user/<int:pk>/return/',Book_return_view,name = 'book_return_view'),
     path('user/return/',Book_return_user,name = 'book_return_user'),
+    path('user/select_book/',Select_book,name = 'select_book'),
     path('user/return/',Book_return1,name = 'book_return1'),
 
     # path('book_create/',Book_create_view),

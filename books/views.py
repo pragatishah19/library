@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404,redirect
@@ -325,8 +326,31 @@ def Book_return_user(request):
     }
     if request.method == 'POST':
         user_pk = request.POST.get('users_pk')
-        return redirect(reverse('books:book_return_view', args = [user_pk]))
+        user = get_object_or_404(User,pk = user_pk)
+        book_pk = request.POST.get('books_pk')
+        print("HRLLO",book_pk)
+        book = Books.objects.get(pk = book_pk)
+        user.books.remove(book)
+        user.no_of_books_taken-=1
+        user.save()
+        return redirect(reverse('books:user_detail_view', args = [user_pk]))
     return render(request,'Books/book_return_user.html',context)
+
+def Select_book(request):
+    if request.method == 'POST':
+        us = request.POST.get('selectuser')
+        user = get_object_or_404(User,pk = us)
+        books_list = user.books.values()
+        bk = list(books_list)
+        # print(bk)
+        context = {
+            'status':"1",
+            'books_list':bk,
+        }
+        return JsonResponse(context)
+        # return JsonResponse({'status':'Here is book_list'})
+    else:
+        return JsonResponse({'status':'0'})
 
 
 def Book_return1(request):

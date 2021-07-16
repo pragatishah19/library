@@ -1,26 +1,38 @@
 {% extends "Books/base.html" %}
+  {% block javascript %}
+    {% include "Books/select_book.html"%}
+  {% endblock %}
+
   {% block content %}
 
-<h4 class="text-center alert alert-primary">Return Book</h4>
-<br><br>
-<form method = POST> {% csrf_token %}
-<div class="d-flex justify-content-center offset-2 col-sm-8">
- <div class="input-group mb-3">
-    <div class="input-group-prepend">
-    <label class="input-group-text" for="user_select">Select User</label>
-    </div>
-    <select id = "user_select" class="custom-select custom-select-lg" name = 'users_pk'>
-      <option selected> </option>
-      {% for user in users_list  %}
-        <option value = {{user.pk}}>{{user.name}}
-      {% endfor %}
-    </select>
-  </div>
-  </div>
+  <h4 class="text-center alert alert-primary">Return Book</h4>
   <br><br>
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn-lg btn-primary">Choose Book to return</button>
-  </div>
-  </form>
+    <form method = POST> {% csrf_token %}
+    <div class="d-flex justify-content-center offset-1 col-sm-10">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+        <label class="input-group-text" for="user_select">Select User</label>
+        </div>
+        <select id = "user_select" class="custom-select custom-select-lg js-show-books" name = 'users_pk'>
+          <option selected> </option>
+          {% for user in users_list  %}
+            <option value = {{user.pk}}>{{user.name}}
+          {% endfor %}
+        </select>
+      </div>
+       <div class="input-group mb-3 offset-1">
+        <div class="input-group-prepend">
+        <label class="input-group-text" for="book_select">Select Book</label>
+        </div>
+        <select id = "book_select" class="custom-select custom-select-lg js-select-user"  name = 'books_pk'>
+          <option selected> </option>
+        </select>
+      </div>
+    </div>
+      <br><br>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn-lg btn-primary">Return Book</button>
+     </div>
+    </form>
 
 {% endblock %}
